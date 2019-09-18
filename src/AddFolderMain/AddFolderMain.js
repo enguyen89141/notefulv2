@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './AddFolderMain.css'
 import ApiContext from '../ApiContext'
 import ValidationError from '../ValidationError/ValidationError'
+import PropTypes from 'prop-types'
 
 export default class AddFolderMain extends Component {
 
@@ -62,4 +63,9 @@ export default class AddFolderMain extends Component {
             </section>
         )
     }
+}
+
+
+AddFolderMain.propTypes = {
+    value: PropTypes.string.isRequired
 }

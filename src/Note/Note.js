@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import Moment from 'react-moment'
 import './Note.css'
 import ApiContext from '../ApiContext'
+import PropTypes from 'prop-types'
 
 export default class Note extends Component{
 
@@ -53,4 +54,8 @@ export default class Note extends Component{
             </div>
         )
     }
+}
+
+Note.propTypes = {
+  value: PropTypes.string
 }

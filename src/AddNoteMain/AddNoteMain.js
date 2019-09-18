@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './AddNoteMain.css'
 import ApiContext from '../ApiContext'
 import ValidationError from '../ValidationError/ValidationError'
+import PropTypes from 'prop-types'
 
 export default class AddNote extends Component {
     state = {
@@ -99,4 +100,10 @@ export default class AddNote extends Component {
             </section>
         )
     }
+}
+
+AddNote.propTypes = {
+    name: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    selectedFolder: PropTypes.string.isRequired
 }
