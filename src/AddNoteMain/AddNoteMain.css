@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+}
+.AddNote {
+    color: #bdbdbd;
+}
+
+section {
+    display: block
+}
+.Noteful-form{
+    background-color: #1d3656;
+    color: #dedede;
+    padding: 16px;
+    max-width: 332px;
+}
+form {
+    display: block;
+    margin-top: 0em;
+}
+.Noteful-form label{
+    display: block;
+    font-size: 16px;
+    padding-bottom: 8px;
+}
+input {
+    font-size: 14px;
+    padding: 8px;
+    width: 300px;
+}
+.Noteful-form textarea, .Noteful-form input, .Noteful-form select {
+    font-size: 14px;
+    padding: 8px;
+    width: 300px;
+}
