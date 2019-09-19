@@ -1,6 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
+This project is meant to be ran in tanget with the Noteful JSON server at <a>https://github.com/tomatau/noteful-json-server</a>
 
 In the project directory, you can run:
 
