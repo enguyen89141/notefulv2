@@ -2,6 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 This project is meant to be ran in tanget with the Noteful JSON server at <a>https://github.com/tomatau/noteful-json-server</a>
+which can be displayed by opening [http://localhost:9090](http://localhost:9090)
 
 In the project directory, you can run:
 
