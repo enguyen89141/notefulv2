@@ -8,13 +8,22 @@ export default class AddNote extends Component {
     state = {
         name: '',
         content: '',
-        selectedFolder: ''
+        selectedFolder: '',
+        folderId: ''
     }
     static contextType = ApiContext
     handleChange(e) {
         this.setState({
             [e.target.name]: e.target.value
         })
+    }
+    handleFolder(e) {
+        this.setState({
+            [e.target.name]: e.target.value,
+            folderId: e.target[e.target.selectedIndex].id
+            
+        })
+        console.log(this.state.folderId)
     }
     validateName(fieldValue) {
         const noteName = this.state.name.trim();
@@ -39,7 +48,7 @@ export default class AddNote extends Component {
             body: JSON.stringify({ 
                 name: this.state.name,
                 content: this.state.content,
-                folder: this.state.selectedFolder
+                folderId: this.state.folderId
              })
         })
             .then(response => response.json())
@@ -81,11 +90,13 @@ export default class AddNote extends Component {
                             className="FolderOptions"
                             name="selectedFolder"
                             value={this.state.selectedFolder}
-                            onChange={e => this.handleChange(e)
+                            onChange={e => this.handleFolder(e)
                             }>
                             <option></option>
                             {folders.map(folder =>
-                                <option>{folder.name}</option>)}
+                                <>
+                                <option id={folder.id}>{folder.name}</option>
+                                </>)}
                         </select>
                         <ValidationError message={this.validateFolder()} />
                         <button
