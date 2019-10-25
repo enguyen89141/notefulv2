@@ -20,7 +20,7 @@ export default class App extends Component {
     }
   }
   componentDidMount() {
-    fetch('http://localhost:8000/api/folders')
+    fetch('https://thawing-ridge-22316.herokuapp.com/api/folders')
       .then(response => {
         if (!response.ok) {
           console.log('Error during folder data retrieval')
@@ -34,7 +34,7 @@ export default class App extends Component {
           folders: folders
         })
       })
-    fetch('http://localhost:8000/api/notes')
+    fetch('https://thawing-ridge-22316.herokuapp.com/api/notes')
       .then(response => {
         if (!response.ok) {
           console.log('Error during note data retrieval')

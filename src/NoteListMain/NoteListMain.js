@@ -33,6 +33,7 @@ export default class NoteListMain extends Component {
                                                 id={note.id}
                                                 name={note.name}
                                                 date_created={note.date_created}
+                                                history={this.props.history}
                                             />
                                         </li>)}
                                 </NoteError>

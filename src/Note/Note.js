@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {NavLink, Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import Moment from 'react-moment'
 import './Note.css'
 import ApiContext from '../ApiContext'
@@ -23,21 +23,22 @@ export default class Note extends Component{
                       onClick={e => {
                         e.preventDefault()
                         const noteId = id
-                        fetch(`http://localhost:8000/api/notes/${noteId}`,{
+                        fetch(`https://thawing-ridge-22316.herokuapp.com/api/notes/${noteId}`,{
                           method: 'DELETE',
                           headers: {
                             'content-type': 'application/json'
                           },
                         })
                         .then(() => {
-                          this.context.deleteNote(noteId)
                           this.props.history.push('/')
+                          this.context.deleteNote(noteId)
                         })
                         .catch(error => {
                           console.error({ error })
                         })
                       }}
-                    >Delete
+                    >
+                      Delete
                                 </button>
                 <div className="Notes__dates">
                     <div className="Notes__dates-modified">
