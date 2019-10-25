@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
+import {NavLink, Link} from 'react-router-dom'
 import Moment from 'react-moment'
 import './Note.css'
 import ApiContext from '../ApiContext'
@@ -9,11 +9,11 @@ export default class Note extends Component{
 
     static contextType = ApiContext
     render(){
-        const { name, id, modified } = this.props
+        const { name, id, date_created } = this.props
         return(
             <div className="Note">
                 <h2 className="Note__title">
-                    <Link to={`/note/${id}`}>
+                    <Link to={`/api/notes/${id}`}>
                         {name}
                         </Link>
                 </h2>
@@ -23,7 +23,7 @@ export default class Note extends Component{
                       onClick={e => {
                         e.preventDefault()
                         const noteId = id
-                        fetch(`http://localhost:9090/notes/${noteId}`,{
+                        fetch(`http://localhost:8000/api/notes/${noteId}`,{
                           method: 'DELETE',
                           headers: {
                             'content-type': 'application/json'
@@ -31,22 +31,21 @@ export default class Note extends Component{
                         })
                         .then(() => {
                           this.context.deleteNote(noteId)
-                          this.props.onDeleteNote(noteId)
+                          this.props.history.push('/')
                         })
                         .catch(error => {
                           console.error({ error })
                         })
                       }}
-                    >
-                      Delete
+                    >Delete
                                 </button>
                 <div className="Notes__dates">
                     <div className="Notes__dates-modified">
-                        Modified
+                        Created
                         {' '}
                         <span className="Date">
                             <Moment format="MM/DD/YYYY">
-                                {modified}
+                                {date_created}
                             </Moment>
                         </span>
                     </div>

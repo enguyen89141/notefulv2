@@ -17,9 +17,9 @@ export default class NoteListNav extends Component {
                                         <li key={folder.id}>
                                             <NavLink
                                                 className="NoteListNav__folder-link"
-                                                to={`/folder/${folder.id}`}
+                                                to={`/api/folders/${folder.id}`}
                                             >
-                                                {folder.name}
+                                                {folder.folder_name}
                                             </NavLink>
                                         </li>)}
                                 </FolderError>

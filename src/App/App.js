@@ -20,7 +20,7 @@ export default class App extends Component {
     }
   }
   componentDidMount() {
-    fetch('http://localhost:9090/folders')
+    fetch('http://localhost:8000/api/folders')
       .then(response => {
         if (!response.ok) {
           console.log('Error during folder data retrieval')
@@ -34,7 +34,7 @@ export default class App extends Component {
           folders: folders
         })
       })
-    fetch('http://localhost:9090/notes')
+    fetch('http://localhost:8000/api/notes')
       .then(response => {
         if (!response.ok) {
           console.log('Error during note data retrieval')
@@ -67,7 +67,7 @@ export default class App extends Component {
   renderNavRoutes() {
     return (
       <>
-        {['/', '/folder/:folderId'].map(path => (
+        {['/', '/api/folders/:folderId'].map(path => (
           <Route
             exact
             key={path}
@@ -75,7 +75,7 @@ export default class App extends Component {
             component={NoteListNav}
           />
         ))}
-        <Route path="/note/:noteId" component={NotePageNav} />
+        <Route path="/api/notes/:noteId" component={NotePageNav} />
         <Route path="/add-folder" component={AddFolderNav} />
         <Route path="/add-note" component={AddFolderNav} />
       </>
@@ -84,7 +84,7 @@ export default class App extends Component {
   renderMainRoutes() {
     return (
       <>
-        {['/', '/folder/:folderId'].map(path => (
+        {['/', '/api/folders/:folderId'].map(path => (
           <Route
             exact
             key={path}
@@ -92,17 +92,12 @@ export default class App extends Component {
             component={NoteListMain}
           />
         ))}
-        <Route path="/note/:noteId" component={NotePageMain} />
+        <Route path="/api/notes/:noteId" component={NotePageMain} />
         <Route path="/add-folder" component={AddFolderMain} />
         <Route path="/add-note" component={AddNoteMain} />
       </>
     )
   }
-  handleDeleteNote = noteId => {
-    this.setState({
-      notes: this.state.notes.filter(note => note.id !== noteId)
-    });
-  };
   render() {
     const value = {
       notes: this.state.notes,

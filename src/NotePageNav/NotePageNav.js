@@ -10,14 +10,15 @@ export default class NotePageNav extends Component {
     render() {
         const { notes = [] } = this.context
         const { noteId } = this.props.match.params
-        const note = findNote(notes, noteId) || { content: '' }
+        
+        const note = findNote(notes, parseInt(noteId)) || { content: '' }
         const folder = this.context.folders.find(folder =>
-            folder.id === note.folderId)
+            folder.id === note.folder)
         return (
             <div className="NotePageNav">
                 {folder && (
                     <h3 className='NotePageNav__folder-name'>
-                        {folder.name}
+                        {folder.folder_name}
                     </h3>
                 )}
                 <button

@@ -22,7 +22,7 @@ export default class NoteListMain extends Component {
                     const notesForFolder = (!this.props.match.params.folderId)
                         ? value.notes
                         : value.notes.filter(note =>
-                            note.folderId === this.props.match.params.folderId)
+                            note.folder === parseInt(this.props.match.params.folderId))
                     return (
                         <section className="NoteListMain">
                             <ul>
@@ -32,7 +32,7 @@ export default class NoteListMain extends Component {
                                             <Note
                                                 id={note.id}
                                                 name={note.name}
-                                                modified={note.modified}
+                                                date_created={note.date_created}
                                             />
                                         </li>)}
                                 </NoteError>

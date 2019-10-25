@@ -40,7 +40,7 @@ export default class AddNote extends Component {
     }
     handleSubmit(e) {
         e.preventDefault()
-        fetch('http://localhost:9090/notes', {
+        fetch('http://localhost:8000/api/notes', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -48,7 +48,7 @@ export default class AddNote extends Component {
             body: JSON.stringify({ 
                 name: this.state.name,
                 content: this.state.content,
-                folderId: this.state.folderId
+                folder: this.state.folderId
              })
         })
             .then(response => response.json())
@@ -95,7 +95,7 @@ export default class AddNote extends Component {
                             <option></option>
                             {folders.map(folder =>
                                 <>
-                                <option id={folder.id}>{folder.name}</option>
+                                <option id={folder.id}>{folder.folder_name}</option>
                                 </>)}
                         </select>
                         <ValidationError message={this.validateFolder()} />

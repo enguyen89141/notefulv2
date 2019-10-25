@@ -23,17 +23,15 @@ export default class AddFolderMain extends Component {
     }
     handleSubmit(e) {
         e.preventDefault()
-        fetch('http://localhost:9090/folders', {
+        fetch('http://localhost:8000/api/folders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({ name: this.state.value })
+            body: JSON.stringify({ folder_name: this.state.value })
         })
             .then(response => response.json())
             .then(data =>{
-
-                this.props.history.push('/')
                 this.context.addFolder(data)
             }) 
             .catch(err => console.log(err))
